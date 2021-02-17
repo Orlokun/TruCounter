@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
 
     private UIManager uiManager;
     private WebCamManager wcManager;
-    private SoundManager sManager;
+    private SoundManager soundManager;
+    private ShameManager shManager;
 
     [SerializeField]
     private MainMatchUIObject match30GameCounter;
@@ -28,11 +29,17 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        uiManager = GetComponent<UIManager>();
-        wcManager = FindObjectOfType<WebCamManager>();
-        sManager = FindObjectOfType<SoundManager>();
+        InitGlobalVariables();
         uiManager.StartDictionary();
         uiManager.SetState(UIManager.UIGeneralStates.MainMenu);
+    }
+
+    private void InitGlobalVariables()
+    {
+        uiManager = GetComponent<UIManager>();
+        wcManager = FindObjectOfType<WebCamManager>();
+        soundManager = FindObjectOfType<SoundManager>();
+        shManager = FindObjectOfType<ShameManager>();
     }
 
     public void Select30Match()
@@ -74,7 +81,7 @@ public class GameManager : MonoBehaviour
                 {
                     activeGameCounter.AddCount(_player, player1count);
                     player1count++;
-                    sManager.PlaySound("addCounter");
+                    soundManager.PlaySound("addCounter");
                     if (player1count >= maxScore)
                     {
                         Debug.Log("Player 1 Won");
@@ -85,7 +92,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     player1count--;
-                    sManager.PlaySound("minusCounter");
+                    soundManager.PlaySound("minusCounter");
                     if (player1count < 0)
                     {
                         player1count = 0;
@@ -103,7 +110,7 @@ public class GameManager : MonoBehaviour
                 {
                     activeGameCounter.AddCount(_player, player2count);
                     player2count++;
-                    sManager.PlaySound("addCounter");
+                    soundManager.PlaySound("addCounter");
 
                     if (player2count >= maxScore)
                     {
@@ -115,7 +122,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     player2count--;
-                    sManager.PlaySound("minusCounter");
+                    soundManager.PlaySound("minusCounter");
                     if (player2count < 0)
                     {
                         player2count = 0;

@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private UIManager uiManager;
     private WebCamManager wcManager;
-
+    private SoundManager sManager;
 
     [SerializeField]
     private MainMatchUIObject match30GameCounter;
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     {
         uiManager = GetComponent<UIManager>();
         wcManager = FindObjectOfType<WebCamManager>();
+        sManager = FindObjectOfType<SoundManager>();
         uiManager.StartDictionary();
         uiManager.SetState(UIManager.UIGeneralStates.MainMenu);
     }
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
                 {
                     activeGameCounter.AddCount(_player, player1count);
                     player1count++;
+                    sManager.PlaySound("addCounter");
                     if (player1count >= maxScore)
                     {
                         Debug.Log("Player 1 Won");
@@ -83,6 +85,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     player1count--;
+                    sManager.PlaySound("minusCounter");
                     if (player1count < 0)
                     {
                         player1count = 0;
@@ -100,6 +103,8 @@ public class GameManager : MonoBehaviour
                 {
                     activeGameCounter.AddCount(_player, player2count);
                     player2count++;
+                    sManager.PlaySound("addCounter");
+
                     if (player2count >= maxScore)
                     {
                         Debug.Log("Player 2 Won");
@@ -110,6 +115,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     player2count--;
+                    sManager.PlaySound("minusCounter");
                     if (player2count < 0)
                     {
                         player2count = 0;

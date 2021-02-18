@@ -29,8 +29,9 @@ public static class SaveSystem
             fStream.Close();
             return shameData;
         }
-        else Debug.LogError("Save file not found in " + path + "");
+        else 
         {
+            Debug.LogError("Save file not found in " + path + "");
             return null;
         }
     }

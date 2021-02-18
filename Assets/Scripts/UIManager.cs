@@ -22,15 +22,12 @@ public class UIManager : MonoBehaviour
     private GameObject restartPanel;
     [SerializeField]
     private GameObject takePicturePanel;
+    [SerializeField]
+    private GameObject wallOfShamePanel;
 
 
     private UIGeneralStates actualState;
 
-
-    private void Awake()
-    {
-
-    }
 
     public void StartDictionary()
     {
@@ -60,9 +57,10 @@ public class UIManager : MonoBehaviour
             }
         }
 
-        pausePanel.SetActive(false);
-        restartPanel.SetActive(false);
-        takePicturePanel.SetActive(false);
+        PauseGamePanelToggle(false);
+        FinishGamePanelToggle(false);
+        TakePicturePanelToggle(false);
+        WallOfShamePanelToggle(false);
     }
 
     public void FinishGamePanelToggle(bool isActive)
@@ -88,4 +86,8 @@ public class UIManager : MonoBehaviour
         takePicturePanel.SetActive(isActive);
     }
 
+    public void WallOfShamePanelToggle(bool isActive)
+    {
+        wallOfShamePanel.SetActive(isActive);
+    }
 }

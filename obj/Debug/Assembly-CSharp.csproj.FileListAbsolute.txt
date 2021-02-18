@@ -316,3 +316,17 @@ C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\NativeGallery.Edi
 C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\NativeGallery.Runtime.pdb
 C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\nunit.framework.pdb
 C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\nunit.framework.xml
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\Unity.Subsystem.Registration.dll
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\Unity.XR.Management.dll
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\Unity.XR.Management.Editor.dll
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\UnityEditor.SpatialTracking.dll
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\UnityEditor.XR.LegacyInputHelpers.dll
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\UnityEngine.SpatialTracking.dll
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\UnityEngine.XR.LegacyInputHelpers.dll
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\Unity.XR.Management.pdb
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\Unity.Subsystem.Registration.pdb
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\UnityEngine.XR.LegacyInputHelpers.pdb
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\Unity.XR.Management.Editor.pdb
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\UnityEditor.SpatialTracking.pdb
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\UnityEngine.SpatialTracking.pdb
+C:\Users\GMR User\Documents\GitGames\TruCounter\Temp\bin\Debug\UnityEditor.XR.LegacyInputHelpers.pdb

@@ -156,4 +156,9 @@ public class GameManager : MonoBehaviour
         uiManager.PauseGamePanelToggle(false);
         uiManager.FinishGamePanelToggle(false);
     }
+
+    public void StartImageSaving(int width, int height, byte[] img)
+    {
+        shManager.AddNewShame(width, height, img);
+    }
 }

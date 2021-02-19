@@ -16,23 +16,31 @@ public class ShameManager : MonoBehaviour
         WebCamTexture wTexture = wManager.WcTexture();
 
         shameData = SaveSystem.LoadShameData();
-        if(shameData==null)
+        if (shameData == null)
         {
             shameData = new ShameData(0, new List<byte[]>());
         }
         Debug.Log("Number of Shames: " + shameData.numberOfShames);
-        foreach(byte[] bytes in shameData.imgBytes)
+
+        foreach (byte[] bytes in shameData.imgBytes)
         {
             CreateImageInWall(wTexture.width, wTexture.height, bytes);
             Debug.Log("Created image: " + bytes);
         }
-        
+
     }
 
     public void AddNewShame(int width, int height, byte[] shameImg)
     {
         shameData.AddNewShame(shameImg);
         CreateImageInWall(width, height, shameImg);
+        SaveSystem.SaveImages(this);
+    }
+
+    public void RemoveShame(int myIndex)
+    {
+        shameData.imgBytes.RemoveAt(myIndex);
+        shameData.UpdateShameData();
         SaveSystem.SaveImages(this);
     }
 
@@ -43,8 +51,6 @@ public class ShameManager : MonoBehaviour
         text.LoadImage(_shameImg);
         RawImage rImg = newImg.GetComponent<RawImage>();
         rImg.texture = text;
-
-        AdjustPadding(rImg);
     }
 
     private void AdjustPadding(RawImage _rImg)

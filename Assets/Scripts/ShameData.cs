@@ -20,6 +20,11 @@ public class ShameData
         numberOfShames = imgBytes.Count;
     }
 
+    public void UpdateShameData()
+    {
+        numberOfShames = imgBytes.Count;
+    }
+
     public int NumberOfShames
     {   
         get

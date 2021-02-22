@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ShameManager : MonoBehaviour
 {
-    private ShameData shameData;
+    WebCamTexture wTexture;
+    private ShameDataManager shameData;
     [SerializeField]
     Transform shameScrollView;
     [SerializeField]
@@ -13,53 +14,64 @@ public class ShameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        WebCamTexture wTexture = wManager.WcTexture();
-
+        wTexture = wManager.WebCamTexture();
         shameData = SaveSystem.LoadShameData();
         if (shameData == null)
         {
-            shameData = new ShameData(0, new List<byte[]>());
+            shameData = new ShameDataManager(0, new List<byte[]>(), new List<string>(), new List<string> (), new List<string>());
         }
-        Debug.Log("Number of Shames: " + shameData.numberOfShames);
 
-        foreach (byte[] bytes in shameData.imgBytes)
+        if(shameData.numberOfShames > 0)
         {
-            CreateImageInWall(wTexture.width, wTexture.height, bytes);
-            Debug.Log("Created image: " + bytes);
+            InstantiateAllShames();
         }
-
     }
 
-    public void AddNewShame(int width, int height, byte[] shameImg)
+    private void InstantiateAllShames()
     {
-        shameData.AddNewShame(shameImg);
-        CreateImageInWall(width, height, shameImg);
-        SaveSystem.SaveImages(this);
+        for (int i=0;i<shameData.numberOfShames;i++)
+        {
+            GameObject _shObj = (GameObject)Instantiate(Resources.Load("shameImage"), shameScrollView);
+            SetImageInTexture(_shObj, wTexture.width, wTexture.height, shameData.shameImgBytes[i]);
+        }
+    }
+    
+    private void InstantiateNewShame(int width, int height, byte[] shameImg)
+    {
+        GameObject _shObj = (GameObject)Instantiate(Resources.Load("shameImage"), shameScrollView);
+        SetImageInTexture(_shObj, wTexture.width, wTexture.height, shameImg);
+        //SetNamesInTextBox
+        //SetDateInTextBox
+        //SetScoreInTextBox
+    }
+
+    public void AddNewShame(int width, int height, byte[] shameImg, string names, string score, string date)
+    {
+        shameData.AddNewShameToData(shameImg, names, score, date);
+        InstantiateNewShame(width, height, shameImg);
+        SaveSystem.SaveImages(shameData);
     }
 
     public void RemoveShame(int myIndex)
     {
-        shameData.imgBytes.RemoveAt(myIndex);
+        shameData.shameImgBytes.RemoveAt(myIndex);
+        shameData.shameNames.RemoveAt(myIndex);
+        shameData.shameScores.RemoveAt(myIndex);
+        shameData.shameDates.RemoveAt(myIndex);
+
         shameData.UpdateShameData();
-        SaveSystem.SaveImages(this);
+        SaveSystem.SaveImages(shameData);
     }
 
-    private void CreateImageInWall(int width, int height, byte[] _shameImg)
+    private void SetImageInTexture(GameObject _obj, int width, int height, byte[] _shameImg)
     {
-        GameObject newImg = (GameObject)Instantiate(Resources.Load("shameImage"), shameScrollView);
-        Texture2D text = new Texture2D(width, height);
-        text.LoadImage(_shameImg);
-        RawImage rImg = newImg.GetComponent<RawImage>();
-        rImg.texture = text;
+        Texture2D _shameImgTexture = new Texture2D(width, height);
+        _shameImgTexture.LoadImage(_shameImg);
+        RawImage rImg = _obj.GetComponent<RawImage>();
+        rImg.texture = _shameImgTexture;
     }
 
-    private void AdjustPadding(RawImage _rImg)
-    {
-        /*GridLayoutGroup grid = shameScrollView.gameObject.GetComponent<GridLayoutGroup>();
-        grid.cellSize = _rImg.GetComponent<RectTransform>().sizeDelta;*/
-    }
-
-    public ShameData GetShameData()
+    public ShameDataManager GetShameData()
     {
         return shameData;
     }

@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - PlayerInputController
     - Reporter
     - ReporterMessageReceiver
+    - ShameImage
     - ShameManager
     - SoundManager
     - UIManager
@@ -33,9 +34,12 @@ ScriptsOnlyBuild:
     - UnityEngine.XR.Management.XRGeneralSettings
     - UnityEngine.XR.Management.XRManagerSettings
     UnityEditor.TestRunner.dll:
+    - TestRunner.Callbacks.WindowResultUpdaterDataHolder
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.CommandLineTest.RunData
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    - UnityEditor.TestTools.TestRunner.TestRunnerWindow
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -80,63 +84,65 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 612}
     - Class: 114
-      Script: {instanceID: 11204}
+      Script: {instanceID: 11306}
     - Class: 114
-      Script: {instanceID: 11286}
-    - Class: 114
-      Script: {instanceID: 11412}
-    - Class: 114
-      Script: {instanceID: 11510}
+      Script: {instanceID: 11388}
     - Class: 114
       Script: {instanceID: 11514}
     - Class: 114
-      Script: {instanceID: 11568}
+      Script: {instanceID: 11612}
     - Class: 114
-      Script: {instanceID: 11626}
+      Script: {instanceID: 11616}
     - Class: 114
-      Script: {instanceID: 11676}
+      Script: {instanceID: 11670}
     - Class: 114
-      Script: {instanceID: 11750}
+      Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11916}
+      Script: {instanceID: 11776}
     - Class: 114
-      Script: {instanceID: 11998}
+      Script: {instanceID: 11850}
     - Class: 114
-      Script: {instanceID: 12086}
+      Script: {instanceID: 12016}
     - Class: 114
-      Script: {instanceID: 12090}
+      Script: {instanceID: 12098}
     - Class: 114
-      Script: {instanceID: 12236}
+      Script: {instanceID: 12186}
     - Class: 114
-      Script: {instanceID: 12274}
+      Script: {instanceID: 12190}
     - Class: 114
-      Script: {instanceID: 12330}
+      Script: {instanceID: 12336}
     - Class: 114
-      Script: {instanceID: 12366}
+      Script: {instanceID: 12374}
     - Class: 114
-      Script: {instanceID: 12636}
+      Script: {instanceID: 12430}
     - Class: 114
-      Script: {instanceID: 13008}
+      Script: {instanceID: 12466}
     - Class: 114
-      Script: {instanceID: 13042}
+      Script: {instanceID: 12736}
     - Class: 114
-      Script: {instanceID: 13374}
+      Script: {instanceID: 13108}
     - Class: 114
-      Script: {instanceID: 13392}
+      Script: {instanceID: 13142}
     - Class: 114
-      Script: {instanceID: 13698}
+      Script: {instanceID: 13474}
     - Class: 114
-      Script: {instanceID: 13806}
+      Script: {instanceID: 13492}
     - Class: 114
-      Script: {instanceID: 14082}
+      Script: {instanceID: 13798}
     - Class: 114
-      Script: {instanceID: 14098}
+      Script: {instanceID: 13906}
     - Class: 114
-      Script: {instanceID: 14336}
+      Script: {instanceID: 14182}
     - Class: 114
-      Script: {instanceID: 14454}
+      Script: {instanceID: 14198}
     - Class: 114
-      Script: {instanceID: 14516}
+      Script: {instanceID: 14206}
+    - Class: 114
+      Script: {instanceID: 14438}
+    - Class: 114
+      Script: {instanceID: 14556}
+    - Class: 114
+      Script: {instanceID: 14618}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -438,7 +444,7 @@ ScriptsOnlyBuild:
     className: ControlTrack
   - hash:
       serializedVersion: 2
-      Hash: 2e78d925ac272a42a425d2878c22605f
+      Hash: 4d5f3ea9103956206c06e476c2726f12
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -633,6 +639,12 @@ ScriptsOnlyBuild:
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
+    className: ShameImage
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
     className: Rotate
   - hash:
       serializedVersion: 2
@@ -751,4 +763,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/MainScene.unity
-  playerPath: C:/Users/GMR User/Documents/GitGames/TruCounter/test01.apk
+  playerPath: C:/Users/oguer/Documents/GitHub/truCounter/test01.apk

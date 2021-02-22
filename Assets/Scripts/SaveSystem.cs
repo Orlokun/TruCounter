@@ -4,28 +4,27 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SaveImages(ShameManager sManager)
+    public static void SaveImages(ShameDataManager sManager)
     {
         BinaryFormatter bFormatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/shameBytes.dog";
+        string path = Application.persistentDataPath + "/shameData.shame";
 
         FileStream fStream = new FileStream(path, FileMode.Create);
-        ShameData shameData = new ShameData(sManager.GetShameData().NumberOfShames, sManager.GetShameData().imgBytes);
 
-        bFormatter.Serialize(fStream, shameData);
+        bFormatter.Serialize(fStream, sManager);
         fStream.Close();
     }
 
 
-    public static ShameData LoadShameData()
+    public static ShameDataManager LoadShameData()
     {
-        string path = Application.persistentDataPath + "/shameBytes.dog";
+        string path = Application.persistentDataPath + "/shameData.shame";
         if (File.Exists(path))
         {
             BinaryFormatter bFormatter = new BinaryFormatter();
             FileStream fStream = new FileStream(path, FileMode.Open);
 
-            ShameData shameData = (ShameData)bFormatter.Deserialize(fStream);
+            ShameDataManager shameData = (ShameDataManager)bFormatter.Deserialize(fStream);
             fStream.Close();
             return shameData;
         }

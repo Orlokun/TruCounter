@@ -17,6 +17,5 @@ public class ShameImage : MonoBehaviour
         int myIndex = transform.GetSiblingIndex();
         sManager.RemoveShame(myIndex);
         Destroy(gameObject);
-
     }
 }

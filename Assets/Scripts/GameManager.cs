@@ -1,10 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+<<<<<<< HEAD
 using System;
+=======
+using UnityEngine.UI;
+using TMPro;
+>>>>>>> f367fcff32ee6afe4e06792db0134f3ee7237185
 
 public class GameManager : MonoBehaviour
 {
+
     #region GlobalVariables
     bool isAdding;
 
@@ -22,6 +29,11 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private MainMatchUIObject match15GameCounter;
 
+<<<<<<< HEAD
+=======
+    [SerializeField]
+    private TMP_InputField[] nameInputs;
+>>>>>>> f367fcff32ee6afe4e06792db0134f3ee7237185
     private MainMatchUIObject activeGameCounter;
     #endregion
 
@@ -38,6 +50,7 @@ public class GameManager : MonoBehaviour
         wcManager = FindObjectOfType<WebCamManager>();
         soundManager = FindObjectOfType<SoundManager>();
         shManager = FindObjectOfType<ShameManager>();
+        nameInputs = new TMP_InputField[2];
     }
 
     public void Select30Match()
@@ -45,6 +58,7 @@ public class GameManager : MonoBehaviour
         maxScore = 30;
         activeGameCounter = match30GameCounter;
         uiManager.SetState(UIManager.UIGeneralStates.Match30);
+        GetNameInputs();
         player1count = 0;
         player2count = 0;
         ChangePlayerAddSubstract(true);
@@ -55,6 +69,7 @@ public class GameManager : MonoBehaviour
         maxScore = 15;
         activeGameCounter = match15GameCounter;
         uiManager.SetState(UIManager.UIGeneralStates.Match15);
+        GetNameInputs();
         player1count = 0;
         player2count = 0;
         ChangePlayerAddSubstract(true);
@@ -132,6 +147,19 @@ public class GameManager : MonoBehaviour
                 #endregion
         }
     }
+    private void GetNameInputs()
+    {
+        //Another display of the unsafest code ever jaja
+        nameInputs[0] = GameObject.Find("Name1Field").GetComponent<TMP_InputField>();
+        nameInputs[1] = GameObject.Find("Name1Field").GetComponent<TMP_InputField>();
+    }
+
+    private void EraseNameInputs()
+    {
+        nameInputs[0] = null;
+        nameInputs[1] = null;
+    }
+
 
     public void ChangePlayerAddSubstract(bool _isIt)
     {
@@ -153,6 +181,7 @@ public class GameManager : MonoBehaviour
         uiManager.FinishGamePanelToggle(false);
     }
 
+<<<<<<< HEAD
     public void StartShameSavingProcess(PictureData _pData)
     {
         string matchCount = player1count.ToString() + " - " + player2count.ToString();
@@ -164,5 +193,17 @@ public class GameManager : MonoBehaviour
     {
         DateTime date = DateTime.Now;
         return date.ToString();
+=======
+    public void StartSavingShame(int width, int height, byte[] img)
+    {
+        string[] names = new string[2] { nameInputs[0].text, nameInputs[1].text};
+        int[] score = new int[2] { player1count, player2count };
+        string date = DateTime.Today.ToString();
+
+        string pNames = names[0] + " - " + names[1];
+        string pScore = score[0].ToString() + " - " + score[1].ToString();
+
+        shManager.AddNewShame(width, height, img, pNames, pScore, date);
+>>>>>>> f367fcff32ee6afe4e06792db0134f3ee7237185
     }
 }

@@ -46,7 +46,7 @@ public class WebCamManager : MonoBehaviour
     private void SelectCamera()
     {
         string selectedDeviceName = "";
-        WebCamDevice[] allDevices = WebCamTexture.devices;
+        WebCamDevice[] allDevices = UnityEngine.WebCamTexture.devices;
         for (int i = 0; i < allDevices.Length; i++)
         {
             if (allDevices[i].isFrontFacing == false)
@@ -58,7 +58,7 @@ public class WebCamManager : MonoBehaviour
         webCamTexture = new WebCamTexture(selectedDeviceName);
     }
 
-    public WebCamTexture WcTexture()
+    public WebCamTexture WebCamTexture()
     {
         SelectCamera();
         return webCamTexture;
@@ -92,6 +92,7 @@ public class WebCamManager : MonoBehaviour
         realImage.texture = photo;
 
         byte[] bytes = photo.EncodeToPNG();
+<<<<<<< HEAD
         PictureData pData = new PictureData(width, height, bytes);
         SaveImage(pData);
 
@@ -103,6 +104,9 @@ public class WebCamManager : MonoBehaviour
         yield return new WaitForSeconds(1.3f);
         UIManager uiManager = FindObjectOfType<UIManager>();
         uiManager.TakePicturePanelToggle(false);
+=======
+        SaveShame(width, height, bytes);
+>>>>>>> f367fcff32ee6afe4e06792db0134f3ee7237185
     }
 
     public void RestartImage()
@@ -111,10 +115,17 @@ public class WebCamManager : MonoBehaviour
         Destroy(photo);
     }
 
+<<<<<<< HEAD
     public void SaveImage(PictureData _pData)
     {
         GameManager gManager = FindObjectOfType<GameManager>();
         gManager.StartShameSavingProcess(_pData);
+=======
+    public void SaveShame(int width, int height, byte[] imgData)
+    {
+        GameManager gManager = FindObjectOfType<GameManager>();
+        gManager.StartSavingShame(width, height, imgData);
+>>>>>>> f367fcff32ee6afe4e06792db0134f3ee7237185
         
         
         /*          NATIVE SAVING

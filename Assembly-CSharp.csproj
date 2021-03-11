@@ -69,6 +69,7 @@
     <Compile Include="Assets\Scripts\PlayerInputController.cs" />
     <Compile Include="Assets\Scripts\SaveSystem.cs" />
     <Compile Include="Assets\Scripts\ShameData.cs" />
+    <Compile Include="Assets\Scripts\ShameDataManager.cs" />
     <Compile Include="Assets\Scripts\ShameImage.cs" />
     <Compile Include="Assets\Scripts\ShameManager.cs" />
     <Compile Include="Assets\Scripts\SoundManager.cs" />

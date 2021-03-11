@@ -22,6 +22,7 @@ public class ShameImage : MonoBehaviour, IPointerClickHandler
     
     public void SetDataInText(MatchData mData)
     {
+<<<<<<< HEAD
         score.text = mData.matchScore;
         names.text = mData.playerNames;
         dates.text = mData.matchDate;
@@ -34,5 +35,10 @@ public class ShameImage : MonoBehaviour, IPointerClickHandler
         shManager.shameToErase = myIndex;
         UIManager uiManager = FindObjectOfType<UIManager>();
         uiManager.ClearShameConfirmPanelToggle(true);
+=======
+        int myIndex = transform.GetSiblingIndex();
+        sManager.RemoveShame(myIndex);
+        Destroy(gameObject);
+>>>>>>> f367fcff32ee6afe4e06792db0134f3ee7237185
     }
 }

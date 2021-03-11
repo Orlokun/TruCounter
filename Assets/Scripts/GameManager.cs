@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class GameManager : MonoBehaviour
     private int player2count;
     private int maxScore;
 
-
     private UIManager uiManager;
     private WebCamManager wcManager;
     private SoundManager soundManager;
@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour
     private MainMatchUIObject match30GameCounter;
     [SerializeField]
     private MainMatchUIObject match15GameCounter;
-
-
 
     private MainMatchUIObject activeGameCounter;
     #endregion
@@ -86,7 +84,6 @@ public class GameManager : MonoBehaviour
                     {
                         Debug.Log("Player 1 Won");
                         GameFinishedWon(_player);
-                        player1count = 0;
                     }
                 }
                 else
@@ -116,7 +113,6 @@ public class GameManager : MonoBehaviour
                     {
                         Debug.Log("Player 2 Won");
                         GameFinishedWon(_player);
-                        player2count = 0;
                     }
                 }
                 else
@@ -157,8 +153,16 @@ public class GameManager : MonoBehaviour
         uiManager.FinishGamePanelToggle(false);
     }
 
-    public void StartImageSaving(int width, int height, byte[] img)
+    public void StartShameSavingProcess(PictureData _pData)
     {
-        shManager.AddNewShame(width, height, img);
+        string matchCount = player1count.ToString() + " - " + player2count.ToString();
+        MatchData mData = new MatchData(uiManager.GetPlayerNames(), GetDate(), matchCount);
+        shManager.AddNewShame(_pData, mData);
+    }
+
+    private string GetDate()
+    {
+        DateTime date = DateTime.Now;
+        return date.ToString();
     }
 }

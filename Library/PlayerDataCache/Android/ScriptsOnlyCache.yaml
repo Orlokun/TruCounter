@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - PlayerInputController
     - Reporter
     - ReporterMessageReceiver
+    - ShameImage
     - ShameManager
     - SoundManager
     - UIManager
@@ -26,6 +27,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
+    - TMPro.TMP_SubMeshUI
     - TMPro.TextMeshProUGUI
     Unity.XR.Management.Editor.dll:
     - UnityEditor.XR.Management.XRGeneralSettingsPerBuildTarget
@@ -100,6 +102,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11916}
     - Class: 114
+      Script: {instanceID: 11942}
+    - Class: 114
       Script: {instanceID: 11998}
     - Class: 114
       Script: {instanceID: 12086}
@@ -120,23 +124,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13042}
     - Class: 114
-      Script: {instanceID: 13374}
+      Script: {instanceID: 13376}
     - Class: 114
-      Script: {instanceID: 13392}
+      Script: {instanceID: 13394}
     - Class: 114
-      Script: {instanceID: 13698}
+      Script: {instanceID: 13700}
     - Class: 114
-      Script: {instanceID: 13806}
+      Script: {instanceID: 13808}
     - Class: 114
-      Script: {instanceID: 14082}
+      Script: {instanceID: 14084}
     - Class: 114
-      Script: {instanceID: 14098}
+      Script: {instanceID: 14100}
     - Class: 114
-      Script: {instanceID: 14336}
+      Script: {instanceID: 14108}
     - Class: 114
-      Script: {instanceID: 14454}
+      Script: {instanceID: 14340}
     - Class: 114
-      Script: {instanceID: 14516}
+      Script: {instanceID: 14458}
+    - Class: 114
+      Script: {instanceID: 14520}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -204,7 +210,7 @@ ScriptsOnlyBuild:
     className: TMP_ScrollbarEventHandler
   - hash:
       serializedVersion: 2
-      Hash: 1d393649dafb32f554867a3f0c56fa20
+      Hash: f74d0daf699ed9c3efca935c6e9742c1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ShameManager
@@ -510,6 +516,12 @@ ScriptsOnlyBuild:
     className: RawImage
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EraseShameScript
+  - hash:
+      serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -630,6 +642,12 @@ ScriptsOnlyBuild:
     className: TMP_StyleSheet
   - hash:
       serializedVersion: 2
+      Hash: acbfee673480914d8599ed27c48005d5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ShameImage
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -732,7 +750,7 @@ ScriptsOnlyBuild:
     className: Slider
   - hash:
       serializedVersion: 2
-      Hash: 183dbbcea87d570a6afd70837bc6bf60
+      Hash: b9b4ac044fd2b8d9f42d588430747565
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UIManager
@@ -751,4 +769,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/MainScene.unity
-  playerPath: C:/Users/GMR User/Documents/GitGames/TruCounter/test01.apk
+  playerPath: C:/Users/GMR User/Documents/GitGames/TruCounter/truTesting.apk

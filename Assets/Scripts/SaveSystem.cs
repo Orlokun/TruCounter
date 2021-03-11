@@ -4,15 +4,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SaveImages(ShameManager sManager)
+    public static void FormatAndSaveShameData(ShameManager sManager)
     {
         BinaryFormatter bFormatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/shameBytes.dog";
 
         FileStream fStream = new FileStream(path, FileMode.Create);
-        ShameData shameData = new ShameData(sManager.GetShameData().NumberOfShames, sManager.GetShameData().imgBytes);
 
-        bFormatter.Serialize(fStream, shameData);
+        bFormatter.Serialize(fStream, sManager.GetShameData());
         fStream.Close();
     }
 

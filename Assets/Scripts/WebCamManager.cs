@@ -5,10 +5,22 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 
+public struct PictureData
+{
+    public int width;
+    public int height;
+    public byte[] rawData;
+
+    public PictureData(int _width, int _height, byte[] _bytes)
+    {
+        width = _width;
+        height = _height;
+        rawData = _bytes;
+    }
+}
+
 public class WebCamManager : MonoBehaviour
 {
-    //TODO: Delete
-    int pictureNumber = 0;
 
     WebCamTexture webCamTexture;
     Texture2D photo;
@@ -78,10 +90,19 @@ public class WebCamManager : MonoBehaviour
 
         photoTaken = true;
         realImage.texture = photo;
-        pictureNumber++;
 
         byte[] bytes = photo.EncodeToPNG();
-        SaveImage(width, height, bytes);
+        PictureData pData = new PictureData(width, height, bytes);
+        SaveImage(pData);
+
+        StartCoroutine(WaitForClosingPopUp());
+    }
+
+    private IEnumerator WaitForClosingPopUp()
+    {
+        yield return new WaitForSeconds(1.3f);
+        UIManager uiManager = FindObjectOfType<UIManager>();
+        uiManager.TakePicturePanelToggle(false);
     }
 
     public void RestartImage()
@@ -90,10 +111,10 @@ public class WebCamManager : MonoBehaviour
         Destroy(photo);
     }
 
-    public void SaveImage(int width, int height, byte[] imgData)
+    public void SaveImage(PictureData _pData)
     {
         GameManager gManager = FindObjectOfType<GameManager>();
-        gManager.StartImageSaving(width, height, imgData);
+        gManager.StartShameSavingProcess(_pData);
         
         
         /*          NATIVE SAVING

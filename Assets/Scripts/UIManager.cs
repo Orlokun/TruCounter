@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
+    public TMP_Text p1Name;
+    public TMP_Text p2Name;
+
     public enum UIGeneralStates
     {
         MainMenu,
@@ -24,6 +27,8 @@ public class UIManager : MonoBehaviour
     private GameObject takePicturePanel;
     [SerializeField]
     private GameObject wallOfShamePanel;
+    [SerializeField]
+    private GameObject shameEraseConfirmPanel;
 
 
     private UIGeneralStates actualState;
@@ -58,6 +63,7 @@ public class UIManager : MonoBehaviour
         }
 
         PauseGamePanelToggle(false);
+        ClearShameConfirmPanelToggle(false);
         FinishGamePanelToggle(false);
         TakePicturePanelToggle(false);
         WallOfShamePanelToggle(false);
@@ -66,6 +72,11 @@ public class UIManager : MonoBehaviour
     public void FinishGamePanelToggle(bool isActive)
     {
         restartPanel.SetActive(isActive);
+    }
+
+    public void ClearShameConfirmPanelToggle(bool isActive)
+    {
+        shameEraseConfirmPanel.SetActive(isActive);
     }
 
     public void PauseGamePanelToggle(bool isActive)
@@ -90,4 +101,20 @@ public class UIManager : MonoBehaviour
     {
         wallOfShamePanel.SetActive(isActive);
     }
+
+    public string GetPlayerNames()
+    {
+        try
+        {
+            p1Name = GameObject.Find("P1InputNameText").GetComponent<TMP_Text>();
+            p2Name = GameObject.Find("P2InputNameText").GetComponent<TMP_Text>();
+        }
+        catch
+        {
+            Debug.LogError("You have no inputTextObjects assigned");
+        }
+
+        return p1Name.text + " - " + p2Name.text;
+    }
+
 }

@@ -20,32 +20,39 @@ public struct MatchData
 public class ShameManager : MonoBehaviour
 {
     private ShameData shameData;
-    [SerializeField]
-    Transform shameScrollView;
-    [SerializeField]
-    WebCamManager wManager;
 
+    [SerializeField]Transform shameScrollView;
+    [SerializeField]WebCamManager wManager;
     public int shameToErase;
-    // Start is called before the first frame update
+
+
     void Awake()
     {
-        WebCamTexture wTexture = wManager.WcTexture();
-
         shameData = SaveSystem.LoadShameData();
         if (shameData == null)
         {
             shameData = new ShameData(0, new List<byte[]>(), new List<string>(), new List<string>(), new List<string>());
             Debug.Log("ShameData created from none");
         }
-        Debug.Log("Number of Shames: " + shameData.numberOfShames);
-
-        foreach (byte[] bytes in shameData.imgBytes)
+        else if (shameData != null)
         {
-            PictureData pData = new PictureData(wTexture.width, wTexture.height, bytes);
-            CreateImageInWall(pData);
-            Debug.Log("Created image: " + bytes);
+            Debug.Log("Number of Shames to Load is: " + shameData.numberOfShames);
+            LoadShameImages();
         }
+    }
 
+    private void LoadShameImages()
+    {
+        WebCamTexture wTexture = wManager.WcTexture();
+        for (int i = 0; i < shameData.numberOfShames; i++)
+        {
+            PictureData pData = new PictureData(wTexture.width, wTexture.height, shameData.imgBytes[i]);
+            MatchData mData = new MatchData(shameData.playerNames[i], shameData.dates[i], shameData.scores[i]);
+
+            GameObject shameImageObject = CreateImageInWall(pData);
+            ShameImage shameHolder = shameImageObject.GetComponent<ShameImage>();
+            shameHolder.SetDataInText(mData);
+        }
     }
 
     public void AddNewShame(PictureData _pData, MatchData mData)
@@ -83,12 +90,6 @@ public class ShameManager : MonoBehaviour
         rImg.texture = text;
 
         return newImg;
-    }
-
-    private void AdjustPadding(RawImage _rImg)
-    {
-        /*GridLayoutGroup grid = shameScrollView.gameObject.GetComponent<GridLayoutGroup>();
-        grid.cellSize = _rImg.GetComponent<RectTransform>().sizeDelta;*/
     }
 
     public ShameData GetShameData()
